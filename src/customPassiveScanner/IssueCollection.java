@@ -1,5 +1,7 @@
 package customPassiveScanner;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -8,6 +10,7 @@ import java.util.TimerTask;
 
 public class IssueCollection {
     private String name;
+    @JsonIgnore
     private String filePath;
     private boolean inUse = true;
     private Map<String, Issue> issues;
@@ -106,4 +109,8 @@ public class IssueCollection {
     public String toString() {
         return this.getName();
     }
+}
+
+abstract class MixIn {
+    @JsonIgnore abstract String getFilePath();
 }
